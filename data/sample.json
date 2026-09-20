@@ -1,0 +1,9 @@
+{
+  "event_id": "evt-092105-010-0001",
+  "event_type": "ASSET_REGISTERED",
+  "aggregate_type": "shared_asset",
+  "aggregate_id": "mountain-stop-benefit-001",
+  "occurred_at": "2026-09-20T12:00:00+08:00",
+  "version": 1,
+  "summary": "登记山地驿站共益运营的首条领域记录"
+}
