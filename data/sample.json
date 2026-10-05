@@ -2,8 +2,13 @@
   "event_id": "evt-092105-010-0001",
   "event_type": "ASSET_REGISTERED",
   "aggregate_type": "shared_asset",
-  "aggregate_id": "mountain-stop-benefit-001",
+  "aggregate_id": "asset-yard-liangjia-003",
   "occurred_at": "2026-09-20T12:00:00+08:00",
   "version": 1,
-  "summary": "登记山地驿站共益运营的首条领域记录"
+  "summary": "登记梁家庄村3号集体院落为共益运营资产",
+  "payload": {
+    "kind": "集体院落",
+    "village": "梁家庄",
+    "label": "梁家庄3号院"
+  }
 }
