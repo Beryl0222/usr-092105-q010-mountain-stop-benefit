@@ -2,8 +2,16 @@
   "event_id": "evt-092105-010-0001",
   "event_type": "ASSET_REGISTERED",
   "aggregate_type": "shared_asset",
-  "aggregate_id": "mountain-stop-benefit-001",
+  "aggregate_id": "node-gallery-km0",
   "occurred_at": "2026-09-20T12:00:00+08:00",
   "version": 1,
-  "summary": "登记山地驿站共益运营的首条领域记录"
+  "summary": "登记百里画廊0公里观景道路节点（跨村交换边界首条记录）",
+  "payload": {
+    "asset_kind": "road_node",
+    "village": "画廊村",
+    "owner": "collective",
+    "funded_by": "fiscal",
+    "location_name": "百里画廊0公里观景点",
+    "maintenance_responsible_party": "collective-hualang"
+  }
 }

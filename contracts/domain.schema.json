@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "山地驿站共益运营领域事件",
-  "description": "用于跨模块交换事实记录的公共信封。",
+  "title": "百里画廊沿线共益运营领域事件",
+  "description": "用于跨村、跨机构交换事实记录的公共信封。事件由 event_id 唯一标识，aggregate_id 指向业务对象，version 从 1 开始递增，occurred_at 保留真实发生时间；来源系统重试时必须沿用原事件标识。",
   "type": "object",
   "required": [
     "event_id",
@@ -10,7 +10,8 @@
     "aggregate_id",
     "occurred_at",
     "version",
-    "summary"
+    "summary",
+    "payload"
   ],
   "properties": {
     "event_id": {
@@ -22,12 +23,51 @@
       "type": "string",
       "enum": [
         "ASSET_REGISTERED",
+        "ASSET_USAGE_RECORDED",
+        "ASSET_RETURNED",
+        "ASSET_REMOVED",
         "TERM_GRANTED",
+        "TERM_EXPIRED",
+        "TERM_REVOKED",
+        "PREPAYMENT_RECEIVED",
+        "PREPAYMENT_FULFILLED",
+        "PREPAYMENT_REFUNDED",
+        "OPERATOR_EXITED",
         "SERVICE_RECORDED",
         "BENEFIT_ALLOCATED",
-        "OPERATOR_EXITED"
+        "BENEFIT_SETTLED",
+        "STALL_PERMIT_ISSUED",
+        "STALL_CLOSED",
+        "CONSIGNMENT_DELIVERED",
+        "CONSIGNMENT_SOLD",
+        "CONSIGNMENT_RETURNED",
+        "CONSIGNMENT_BAD_DEBT",
+        "CONSIGNMENT_SETTLED",
+        "REFERRAL_RECORDED",
+        "REFERRAL_VERIFIED",
+        "REFERRAL_REJECTED",
+        "SHIFT_SCHEDULED",
+        "SHIFT_FULFILLED",
+        "SHIFT_CANCELLED",
+        "PLEDGE_MADE",
+        "PLEDGE_FULFILLED",
+        "PLEDGE_SHORTFALL",
+        "CAPACITY_DEFINED",
+        "LOAD_REPORTED",
+        "OVERLOAD_DECLARED",
+        "OVERLOAD_CLEARED",
+        "SUSPENSION_ISSUED",
+        "SUSPENSION_LIFTED",
+        "COMMITMENT_HONORED",
+        "REPAIR_OPENED",
+        "REPAIR_CLAIMED",
+        "REPAIR_COMPLETED",
+        "NOTICE_PUBLISHED",
+        "HANDOVER_LIST_GENERATED",
+        "HANDOVER_BLOCKER_RESOLVED",
+        "HANDOVER_COMPLETED"
       ],
-      "description": "本领域事件类型"
+      "description": "本领域事件类型（见 src/catalog.py 事件目录）"
     },
     "aggregate_type": {
       "type": "string",
@@ -35,9 +75,19 @@
         "shared_asset",
         "operating_term",
         "community_contribution",
-        "benefit_distribution"
+        "benefit_distribution",
+        "seasonal_stall",
+        "consignment",
+        "referral",
+        "volunteer_shift",
+        "employment_pledge",
+        "eco_capacity",
+        "suspension",
+        "repair_order",
+        "public_notice",
+        "handover"
       ],
-      "description": "业务对象类型"
+      "description": "业务对象类型；前四项为跨村交换边界：跨村交换边界：公共资产与道路节点；跨村交换边界：经营许可与期限；跨村交换边界：跨村贡献交换（须附证据）；跨村交换边界：收益分配结果"
     },
     "aggregate_id": {
       "type": "string",
@@ -58,6 +108,1221 @@
       "type": "string",
       "minLength": 2,
       "description": "中文事实摘要"
+    },
+    "payload": {
+      "type": "object",
+      "description": "事件业务字段，结构随 event_type 而定"
+    }
+  },
+  "$defs": {
+    "payload_ASSET_REGISTERED": {
+      "type": "object",
+      "required": [
+        "asset_kind",
+        "village",
+        "owner",
+        "funded_by",
+        "location_name",
+        "maintenance_responsible_party"
+      ],
+      "properties": {
+        "asset_kind": {
+          "type": "string",
+          "enum": [
+            "road_node",
+            "public_toilet",
+            "public_facility",
+            "collective_yard",
+            "stall_site",
+            "equipment"
+          ]
+        },
+        "village": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string",
+          "enum": [
+            "collective",
+            "government",
+            "operator"
+          ]
+        },
+        "funded_by": {
+          "type": "string",
+          "enum": [
+            "fiscal",
+            "collective",
+            "social",
+            "operator"
+          ]
+        },
+        "location_name": {
+          "type": "string"
+        },
+        "maintenance_responsible_party": {
+          "type": "string"
+        },
+        "road_node_asset_id": {
+          "type": "string"
+        },
+        "present_at_asset_id": {
+          "type": "string"
+        },
+        "removable": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_ASSET_USAGE_RECORDED": {
+      "type": "object",
+      "required": [
+        "asset_id",
+        "term_id",
+        "party_id",
+        "used_from",
+        "used_to",
+        "usage_kind"
+      ],
+      "properties": {
+        "asset_id": {
+          "type": "string"
+        },
+        "term_id": {
+          "type": "string"
+        },
+        "party_id": {
+          "type": "string"
+        },
+        "used_from": {
+          "type": "string"
+        },
+        "used_to": {
+          "type": "string"
+        },
+        "usage_kind": {
+          "type": "string",
+          "enum": [
+            "cafe",
+            "homestay",
+            "stall",
+            "storage",
+            "service",
+            "other"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_ASSET_RETURNED": {
+      "type": "object",
+      "required": [
+        "asset_id",
+        "term_id",
+        "returned_by",
+        "condition_note"
+      ],
+      "properties": {
+        "asset_id": {
+          "type": "string"
+        },
+        "term_id": {
+          "type": "string"
+        },
+        "returned_by": {
+          "type": "string"
+        },
+        "condition_note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_ASSET_REMOVED": {
+      "type": "object",
+      "required": [
+        "asset_id",
+        "removing_party",
+        "reason"
+      ],
+      "properties": {
+        "asset_id": {
+          "type": "string"
+        },
+        "removing_party": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_TERM_GRANTED": {
+      "type": "object",
+      "required": [
+        "party_id",
+        "village",
+        "scope",
+        "asset_ids",
+        "starts_at",
+        "ends_at",
+        "seasonal",
+        "grant_basis"
+      ],
+      "properties": {
+        "party_id": {
+          "type": "string"
+        },
+        "village": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string",
+          "enum": [
+            "station_cafe",
+            "homestay",
+            "facility_operation",
+            "collective_yard"
+          ]
+        },
+        "asset_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "starts_at": {
+          "type": "string"
+        },
+        "ends_at": {
+          "type": "string"
+        },
+        "seasonal": {
+          "type": "boolean"
+        },
+        "grant_basis": {
+          "type": "string",
+          "enum": [
+            "open_bid",
+            "rotation",
+            "direct"
+          ]
+        },
+        "conditions": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_TERM_EXPIRED": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_TERM_REVOKED": {
+      "type": "object",
+      "required": [
+        "reason"
+      ],
+      "properties": {
+        "reason": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_PREPAYMENT_RECEIVED": {
+      "type": "object",
+      "required": [
+        "term_id",
+        "prepayment_id",
+        "guest_ref",
+        "amount_cents",
+        "service_kind",
+        "due_date"
+      ],
+      "properties": {
+        "term_id": {
+          "type": "string"
+        },
+        "prepayment_id": {
+          "type": "string"
+        },
+        "guest_ref": {
+          "type": "string"
+        },
+        "amount_cents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "service_kind": {
+          "type": "string",
+          "enum": [
+            "stay",
+            "catering",
+            "stall_order"
+          ]
+        },
+        "due_date": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_PREPAYMENT_FULFILLED": {
+      "type": "object",
+      "required": [
+        "prepayment_id"
+      ],
+      "properties": {
+        "prepayment_id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_PREPAYMENT_REFUNDED": {
+      "type": "object",
+      "required": [
+        "prepayment_id",
+        "amount_cents"
+      ],
+      "properties": {
+        "prepayment_id": {
+          "type": "string"
+        },
+        "amount_cents": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_OPERATOR_EXITED": {
+      "type": "object",
+      "required": [
+        "requested_at",
+        "reason"
+      ],
+      "properties": {
+        "requested_at": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_SERVICE_RECORDED": {
+      "type": "object",
+      "required": [
+        "contribution_kind",
+        "from_party",
+        "from_village",
+        "to_village",
+        "quantity",
+        "unit",
+        "evidence_refs",
+        "period"
+      ],
+      "properties": {
+        "contribution_kind": {
+          "type": "string",
+          "enum": [
+            "cross_village_referral",
+            "volunteer_support",
+            "consignment_service",
+            "other"
+          ]
+        },
+        "from_party": {
+          "type": "string"
+        },
+        "from_village": {
+          "type": "string"
+        },
+        "to_village": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "unit": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "period": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_BENEFIT_ALLOCATED": {
+      "type": "object",
+      "required": [
+        "period",
+        "lines"
+      ],
+      "properties": {
+        "period": {
+          "type": "string"
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_BENEFIT_SETTLED": {
+      "type": "object",
+      "required": [
+        "allocation_aggregate_id",
+        "evidence_ref"
+      ],
+      "properties": {
+        "allocation_aggregate_id": {
+          "type": "string"
+        },
+        "evidence_ref": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_STALL_PERMIT_ISSUED": {
+      "type": "object",
+      "required": [
+        "site_asset_id",
+        "party_id",
+        "village",
+        "season",
+        "starts_at",
+        "ends_at"
+      ],
+      "properties": {
+        "site_asset_id": {
+          "type": "string"
+        },
+        "party_id": {
+          "type": "string"
+        },
+        "village": {
+          "type": "string"
+        },
+        "season": {
+          "type": "string"
+        },
+        "starts_at": {
+          "type": "string"
+        },
+        "ends_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_STALL_CLOSED": {
+      "type": "object",
+      "required": [
+        "site_asset_id",
+        "closed_at"
+      ],
+      "properties": {
+        "site_asset_id": {
+          "type": "string"
+        },
+        "closed_at": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_CONSIGNMENT_DELIVERED": {
+      "type": "object",
+      "required": [
+        "term_id",
+        "supplier_party_id",
+        "seller_party_id",
+        "village",
+        "items_summary",
+        "quantity",
+        "unit",
+        "unit_price_cents",
+        "unsold_policy",
+        "delivered_at"
+      ],
+      "properties": {
+        "term_id": {
+          "type": "string"
+        },
+        "supplier_party_id": {
+          "type": "string"
+        },
+        "seller_party_id": {
+          "type": "string"
+        },
+        "village": {
+          "type": "string"
+        },
+        "items_summary": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "unit": {
+          "type": "string"
+        },
+        "unit_price_cents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unsold_policy": {
+          "type": "string",
+          "enum": [
+            "return",
+            "discount_purchase"
+          ]
+        },
+        "delivered_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_CONSIGNMENT_SOLD": {
+      "type": "object",
+      "required": [
+        "quantity",
+        "gross_cents",
+        "commission_cents",
+        "order_ref",
+        "sold_at"
+      ],
+      "properties": {
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "gross_cents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "commission_cents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "order_ref": {
+          "type": "string"
+        },
+        "sold_at": {
+          "type": "string"
+        },
+        "point_of_sale_asset_id": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_CONSIGNMENT_RETURNED": {
+      "type": "object",
+      "required": [
+        "quantity",
+        "reason",
+        "returned_at"
+      ],
+      "properties": {
+        "quantity": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "reason": {
+          "type": "string"
+        },
+        "returned_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_CONSIGNMENT_BAD_DEBT": {
+      "type": "object",
+      "required": [
+        "amount_cents",
+        "responsible_party_id",
+        "basis",
+        "evidence_ref"
+      ],
+      "properties": {
+        "amount_cents": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "responsible_party_id": {
+          "type": "string"
+        },
+        "basis": {
+          "type": "string",
+          "enum": [
+            "seller_price_risk",
+            "seller_credit",
+            "supplier_agreed_risk"
+          ]
+        },
+        "evidence_ref": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_CONSIGNMENT_SETTLED": {
+      "type": "object",
+      "required": [
+        "paid_cents",
+        "settled_at"
+      ],
+      "properties": {
+        "paid_cents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "settled_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_REFERRAL_RECORDED": {
+      "type": "object",
+      "required": [
+        "source_party_id",
+        "source_village",
+        "target_party_id",
+        "target_village",
+        "node_asset_id",
+        "channel",
+        "guest_ref",
+        "evidence_kind",
+        "evidence_ref",
+        "recorded_at"
+      ],
+      "properties": {
+        "source_party_id": {
+          "type": "string"
+        },
+        "source_village": {
+          "type": "string"
+        },
+        "target_party_id": {
+          "type": "string"
+        },
+        "target_village": {
+          "type": "string"
+        },
+        "node_asset_id": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "guest_ref": {
+          "type": "string"
+        },
+        "evidence_kind": {
+          "type": "string",
+          "enum": [
+            "voucher",
+            "qr_code",
+            "booking_code",
+            "signed_slip"
+          ]
+        },
+        "evidence_ref": {
+          "type": "string"
+        },
+        "recorded_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_REFERRAL_VERIFIED": {
+      "type": "object",
+      "required": [
+        "referral_id",
+        "booking_id",
+        "checked_in_at",
+        "payout_cents"
+      ],
+      "properties": {
+        "referral_id": {
+          "type": "string"
+        },
+        "booking_id": {
+          "type": "string"
+        },
+        "checked_in_at": {
+          "type": "string"
+        },
+        "payout_cents": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_REFERRAL_REJECTED": {
+      "type": "object",
+      "required": [
+        "referral_id",
+        "reason"
+      ],
+      "properties": {
+        "referral_id": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_SHIFT_SCHEDULED": {
+      "type": "object",
+      "required": [
+        "shift_id",
+        "volunteer_party_id",
+        "node_asset_id",
+        "starts_at",
+        "ends_at",
+        "duty"
+      ],
+      "properties": {
+        "shift_id": {
+          "type": "string"
+        },
+        "volunteer_party_id": {
+          "type": "string"
+        },
+        "node_asset_id": {
+          "type": "string"
+        },
+        "starts_at": {
+          "type": "string"
+        },
+        "ends_at": {
+          "type": "string"
+        },
+        "duty": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_SHIFT_FULFILLED": {
+      "type": "object",
+      "required": [
+        "shift_id",
+        "evidence_ref",
+        "served_minutes"
+      ],
+      "properties": {
+        "shift_id": {
+          "type": "string"
+        },
+        "evidence_ref": {
+          "type": "string"
+        },
+        "served_minutes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_SHIFT_CANCELLED": {
+      "type": "object",
+      "required": [
+        "shift_id",
+        "reason"
+      ],
+      "properties": {
+        "shift_id": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_PLEDGE_MADE": {
+      "type": "object",
+      "required": [
+        "term_id",
+        "operator_party_id",
+        "positions_total",
+        "local_positions_min",
+        "wage_min_cents",
+        "season"
+      ],
+      "properties": {
+        "term_id": {
+          "type": "string"
+        },
+        "operator_party_id": {
+          "type": "string"
+        },
+        "positions_total": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "local_positions_min": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "wage_min_cents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "season": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_PLEDGE_FULFILLED": {
+      "type": "object",
+      "required": [
+        "term_id",
+        "hires_total",
+        "hires_local",
+        "payroll_evidence_refs",
+        "period"
+      ],
+      "properties": {
+        "term_id": {
+          "type": "string"
+        },
+        "hires_total": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "hires_local": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "payroll_evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "period": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_PLEDGE_SHORTFALL": {
+      "type": "object",
+      "required": [
+        "term_id",
+        "positions_gap",
+        "local_gap",
+        "note"
+      ],
+      "properties": {
+        "term_id": {
+          "type": "string"
+        },
+        "positions_gap": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "local_gap": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_CAPACITY_DEFINED": {
+      "type": "object",
+      "required": [
+        "node_asset_id",
+        "metric",
+        "daily_cap"
+      ],
+      "properties": {
+        "node_asset_id": {
+          "type": "string"
+        },
+        "metric": {
+          "type": "string",
+          "enum": [
+            "persons",
+            "vehicles"
+          ]
+        },
+        "daily_cap": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_LOAD_REPORTED": {
+      "type": "object",
+      "required": [
+        "node_asset_id",
+        "date",
+        "load"
+      ],
+      "properties": {
+        "node_asset_id": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "load": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_OVERLOAD_DECLARED": {
+      "type": "object",
+      "required": [
+        "node_asset_id",
+        "date",
+        "load"
+      ],
+      "properties": {
+        "node_asset_id": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "load": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_OVERLOAD_CLEARED": {
+      "type": "object",
+      "required": [
+        "node_asset_id",
+        "date"
+      ],
+      "properties": {
+        "node_asset_id": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_SUSPENSION_ISSUED": {
+      "type": "object",
+      "required": [
+        "reason",
+        "scope_asset_ids",
+        "service_kinds",
+        "starts_at"
+      ],
+      "properties": {
+        "reason": {
+          "type": "string",
+          "enum": [
+            "storm",
+            "maintenance",
+            "overload"
+          ]
+        },
+        "scope_asset_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "service_kinds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "new_booking",
+              "stall_sale",
+              "traffic_entry",
+              "consignment_sale",
+              "new_referral"
+            ]
+          },
+          "minItems": 1
+        },
+        "starts_at": {
+          "type": "string"
+        },
+        "expected_end": {
+          "type": "string"
+        },
+        "scope_term_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "protected_commitments": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_SUSPENSION_LIFTED": {
+      "type": "object",
+      "required": [
+        "ended_at"
+      ],
+      "properties": {
+        "ended_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_COMMITMENT_HONORED": {
+      "type": "object",
+      "required": [
+        "suspension_id",
+        "commitment_id",
+        "note",
+        "honored_at"
+      ],
+      "properties": {
+        "suspension_id": {
+          "type": "string"
+        },
+        "commitment_id": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "honored_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_REPAIR_OPENED": {
+      "type": "object",
+      "required": [
+        "asset_id",
+        "fault",
+        "reported_by",
+        "opened_at"
+      ],
+      "properties": {
+        "asset_id": {
+          "type": "string"
+        },
+        "fault": {
+          "type": "string"
+        },
+        "reported_by": {
+          "type": "string"
+        },
+        "opened_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_REPAIR_CLAIMED": {
+      "type": "object",
+      "required": [
+        "repair_order_id",
+        "claimed_by",
+        "basis"
+      ],
+      "properties": {
+        "repair_order_id": {
+          "type": "string"
+        },
+        "claimed_by": {
+          "type": "string"
+        },
+        "basis": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_REPAIR_COMPLETED": {
+      "type": "object",
+      "required": [
+        "cost_cents",
+        "borne_by",
+        "evidence_ref",
+        "completed_at"
+      ],
+      "properties": {
+        "cost_cents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "borne_by": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          },
+          "minItems": 1
+        },
+        "evidence_ref": {
+          "type": "string"
+        },
+        "completed_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_NOTICE_PUBLISHED": {
+      "type": "object",
+      "required": [
+        "quarter",
+        "scope_village",
+        "sections",
+        "source_event_ids"
+      ],
+      "properties": {
+        "quarter": {
+          "type": "string"
+        },
+        "scope_village": {
+          "type": "string"
+        },
+        "sections": {
+          "type": "object"
+        },
+        "source_event_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_HANDOVER_LIST_GENERATED": {
+      "type": "object",
+      "required": [
+        "term_id",
+        "operator_party_id",
+        "generated_at",
+        "checklist"
+      ],
+      "properties": {
+        "term_id": {
+          "type": "string"
+        },
+        "operator_party_id": {
+          "type": "string"
+        },
+        "generated_at": {
+          "type": "string"
+        },
+        "checklist": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_HANDOVER_BLOCKER_RESOLVED": {
+      "type": "object",
+      "required": [
+        "handover_id",
+        "blocker_id",
+        "resolution_evidence"
+      ],
+      "properties": {
+        "handover_id": {
+          "type": "string"
+        },
+        "blocker_id": {
+          "type": "string"
+        },
+        "resolution_evidence": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "payload_HANDOVER_COMPLETED": {
+      "type": "object",
+      "required": [
+        "handover_id",
+        "receiving_party_id",
+        "data_acknowledgement_ref",
+        "completed_at"
+      ],
+      "properties": {
+        "handover_id": {
+          "type": "string"
+        },
+        "receiving_party_id": {
+          "type": "string"
+        },
+        "data_acknowledgement_ref": {
+          "type": "string"
+        },
+        "completed_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
     }
   },
   "additionalProperties": true

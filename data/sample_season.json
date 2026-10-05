@@ -1,0 +1,1105 @@
+[
+  {
+    "event_id": "evt-blh-0001",
+    "event_type": "ASSET_REGISTERED",
+    "aggregate_type": "shared_asset",
+    "aggregate_id": "node-gallery-km0",
+    "occurred_at": "2026-04-20T09:00:00+08:00",
+    "version": 1,
+    "summary": "登记百里画廊0公里观景道路节点",
+    "payload": {
+      "asset_kind": "road_node",
+      "village": "画廊村",
+      "owner": "collective",
+      "funded_by": "fiscal",
+      "location_name": "百里画廊0公里观景点",
+      "maintenance_responsible_party": "collective-hualang"
+    }
+  },
+  {
+    "event_id": "evt-blh-0002",
+    "event_type": "ASSET_REGISTERED",
+    "aggregate_type": "shared_asset",
+    "aggregate_id": "toilet-gallery-km0",
+    "occurred_at": "2026-04-20T09:05:00+08:00",
+    "version": 1,
+    "summary": "登记财政资金修建的0公里节点旅游厕所",
+    "payload": {
+      "asset_kind": "public_toilet",
+      "village": "画廊村",
+      "owner": "government",
+      "funded_by": "fiscal",
+      "location_name": "0公里节点旅游厕所",
+      "road_node_asset_id": "node-gallery-km0",
+      "present_at_asset_id": "node-gallery-km0",
+      "maintenance_responsible_party": "collective-hualang"
+    }
+  },
+  {
+    "event_id": "evt-blh-0003",
+    "event_type": "ASSET_REGISTERED",
+    "aggregate_type": "shared_asset",
+    "aggregate_id": "yard-hualang-station",
+    "occurred_at": "2026-04-20T09:10:00+08:00",
+    "version": 1,
+    "summary": "登记村集体院落（驿站咖啡用房）",
+    "payload": {
+      "asset_kind": "collective_yard",
+      "village": "画廊村",
+      "owner": "collective",
+      "funded_by": "collective",
+      "location_name": "画廊村老村委院落",
+      "maintenance_responsible_party": "collective-hualang"
+    }
+  },
+  {
+    "event_id": "evt-blh-0004",
+    "event_type": "ASSET_REGISTERED",
+    "aggregate_type": "shared_asset",
+    "aggregate_id": "site-stall-km0",
+    "occurred_at": "2026-04-20T09:15:00+08:00",
+    "version": 1,
+    "summary": "登记0公里节点季节性摊位点位",
+    "payload": {
+      "asset_kind": "stall_site",
+      "village": "画廊村",
+      "owner": "collective",
+      "funded_by": "collective",
+      "location_name": "0公里节点摊区A位",
+      "road_node_asset_id": "node-gallery-km0",
+      "present_at_asset_id": "node-gallery-km0",
+      "maintenance_responsible_party": "collective-hualang"
+    }
+  },
+  {
+    "event_id": "evt-blh-0005",
+    "event_type": "ASSET_REGISTERED",
+    "aggregate_type": "shared_asset",
+    "aggregate_id": "eqp-coffee-bar",
+    "occurred_at": "2026-04-20T09:20:00+08:00",
+    "version": 1,
+    "summary": "登记运营商自带可搬离咖啡吧台设备",
+    "payload": {
+      "asset_kind": "equipment",
+      "village": "画廊村",
+      "owner": "operator",
+      "funded_by": "operator",
+      "location_name": "驿站咖啡吧台",
+      "present_at_asset_id": "yard-hualang-station",
+      "removable": true,
+      "maintenance_responsible_party": "op-yunshu-travel"
+    }
+  },
+  {
+    "event_id": "evt-blh-0006",
+    "event_type": "ASSET_REGISTERED",
+    "aggregate_type": "shared_asset",
+    "aggregate_id": "yard-yunqi-08",
+    "occurred_at": "2026-04-20T09:25:00+08:00",
+    "version": 1,
+    "summary": "登记云栖村8号民宿院落",
+    "payload": {
+      "asset_kind": "collective_yard",
+      "village": "云栖村",
+      "owner": "collective",
+      "funded_by": "collective",
+      "location_name": "云栖村8号院",
+      "maintenance_responsible_party": "collective-yunqi"
+    }
+  },
+  {
+    "event_id": "evt-blh-0007",
+    "event_type": "ASSET_REGISTERED",
+    "aggregate_type": "shared_asset",
+    "aggregate_id": "node-yunqi-gate",
+    "occurred_at": "2026-04-20T09:30:00+08:00",
+    "version": 1,
+    "summary": "登记云栖入口道路节点",
+    "payload": {
+      "asset_kind": "road_node",
+      "village": "云栖村",
+      "owner": "collective",
+      "funded_by": "fiscal",
+      "location_name": "云栖入口",
+      "maintenance_responsible_party": "collective-yunqi"
+    }
+  },
+  {
+    "event_id": "evt-blh-0008",
+    "event_type": "CAPACITY_DEFINED",
+    "aggregate_type": "eco_capacity",
+    "aggregate_id": "cap-yunqi-gate",
+    "occurred_at": "2026-04-25T10:00:00+08:00",
+    "version": 1,
+    "summary": "云栖入口日生态容量核定为800人次",
+    "payload": {
+      "node_asset_id": "node-yunqi-gate",
+      "metric": "persons",
+      "daily_cap": 800
+    }
+  },
+  {
+    "event_id": "evt-blh-0009",
+    "event_type": "TERM_GRANTED",
+    "aggregate_type": "operating_term",
+    "aggregate_id": "term-yunshu-2026",
+    "occurred_at": "2026-04-28T14:00:00+08:00",
+    "version": 1,
+    "summary": "公开竞价授予云舒文旅2026旺季驿站咖啡许可（5月1日至10月25日）",
+    "payload": {
+      "party_id": "op-yunshu-travel",
+      "village": "画廊村",
+      "scope": "station_cafe",
+      "asset_ids": [
+        "yard-hualang-station"
+      ],
+      "starts_at": "2026-05-01T00:00:00+08:00",
+      "ends_at": "2026-10-25T23:59:59+08:00",
+      "seasonal": true,
+      "grant_basis": "open_bid",
+      "conditions": {
+        "厕所首问维护": true,
+        "就业岗位": 6,
+        "本地用工下限": 4
+      }
+    }
+  },
+  {
+    "event_id": "evt-blh-0010",
+    "event_type": "TERM_GRANTED",
+    "aggregate_type": "operating_term",
+    "aggregate_id": "term-shanju-2026",
+    "occurred_at": "2026-04-28T14:30:00+08:00",
+    "version": 1,
+    "summary": "授予山居民宿2026旺季经营许可",
+    "payload": {
+      "party_id": "op-shanju-stay",
+      "village": "云栖村",
+      "scope": "homestay",
+      "asset_ids": [
+        "yard-yunqi-08"
+      ],
+      "starts_at": "2026-05-01T00:00:00+08:00",
+      "ends_at": "2026-10-25T23:59:59+08:00",
+      "seasonal": true,
+      "grant_basis": "rotation"
+    }
+  },
+  {
+    "event_id": "evt-blh-0011",
+    "event_type": "PLEDGE_MADE",
+    "aggregate_type": "employment_pledge",
+    "aggregate_id": "pledge-yunshu-2026",
+    "occurred_at": "2026-04-28T15:00:00+08:00",
+    "version": 1,
+    "summary": "云舒文旅承诺旺季提供6个岗位、本地用工不少于4人、月工资不低于2200元",
+    "payload": {
+      "term_id": "term-yunshu-2026",
+      "operator_party_id": "op-yunshu-travel",
+      "positions_total": 6,
+      "local_positions_min": 4,
+      "wage_min_cents": 220000,
+      "season": "2026旺季"
+    }
+  },
+  {
+    "event_id": "evt-blh-0012",
+    "event_type": "STALL_PERMIT_ISSUED",
+    "aggregate_type": "seasonal_stall",
+    "aggregate_id": "stall-wang-2026",
+    "occurred_at": "2026-06-28T10:00:00+08:00",
+    "version": 1,
+    "summary": "王姐取得0公里摊区A位夏秋季节许可",
+    "payload": {
+      "site_asset_id": "site-stall-km0",
+      "party_id": "vendor-wang-jie",
+      "village": "画廊村",
+      "season": "2026夏秋",
+      "starts_at": "2026-07-01T00:00:00+08:00",
+      "ends_at": "2026-09-30T23:59:59+08:00"
+    }
+  },
+  {
+    "event_id": "evt-blh-0013",
+    "event_type": "REPAIR_OPENED",
+    "aggregate_type": "repair_order",
+    "aggregate_id": "repair-toilet-0710",
+    "occurred_at": "2026-07-10T09:00:00+08:00",
+    "version": 1,
+    "summary": "0公里财政厕所供水管破裂开单",
+    "payload": {
+      "asset_id": "toilet-gallery-km0",
+      "fault": "供水管破裂停水",
+      "reported_by": "volunteer-zhou",
+      "opened_at": "2026-07-10T09:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "evt-blh-0014",
+    "event_type": "REPAIR_CLAIMED",
+    "aggregate_type": "repair_order",
+    "aggregate_id": "repair-toilet-0710",
+    "occurred_at": "2026-07-10T11:00:00+08:00",
+    "version": 2,
+    "summary": "驿站运营商按许可条件首问认领维修",
+    "payload": {
+      "repair_order_id": "repair-toilet-0710",
+      "claimed_by": "op-yunshu-travel",
+      "basis": "许可条件：驿站运营商承担节点财政厕所日常维修首问责任"
+    }
+  },
+  {
+    "event_id": "evt-blh-0015",
+    "event_type": "REPAIR_COMPLETED",
+    "aggregate_type": "repair_order",
+    "aggregate_id": "repair-toilet-0710",
+    "occurred_at": "2026-07-11T16:00:00+08:00",
+    "version": 3,
+    "summary": "厕所维修完工，费用1800元由运营商承担800、村集体承担1000",
+    "payload": {
+      "cost_cents": 180000,
+      "borne_by": [
+        {
+          "party_id": "op-yunshu-travel",
+          "share_cents": 80000
+        },
+        {
+          "party_id": "collective-hualang",
+          "share_cents": 100000
+        }
+      ],
+      "evidence_ref": "ev-repair-invoice-0711",
+      "completed_at": "2026-07-11T16:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "evt-blh-0016",
+    "event_type": "CONSIGNMENT_DELIVERED",
+    "aggregate_type": "consignment",
+    "aggregate_id": "batch-honey-2026",
+    "occurred_at": "2026-07-05T08:30:00+08:00",
+    "version": 1,
+    "summary": "柳湾村马桂凤交付200瓶土蜂蜜寄售，单价30元，未售退回",
+    "payload": {
+      "term_id": "term-yunshu-2026",
+      "supplier_party_id": "farmer-ma-guifeng",
+      "seller_party_id": "op-yunshu-travel",
+      "village": "画廊村",
+      "items_summary": "土蜂蜜500g装",
+      "quantity": 200,
+      "unit": "瓶",
+      "unit_price_cents": 3000,
+      "unsold_policy": "return",
+      "delivered_at": "2026-07-05T08:30:00+08:00"
+    }
+  },
+  {
+    "event_id": "evt-blh-0017",
+    "event_type": "CONSIGNMENT_SOLD",
+    "aggregate_type": "consignment",
+    "aggregate_id": "batch-honey-2026",
+    "occurred_at": "2026-07-20T15:00:00+08:00",
+    "version": 2,
+    "summary": "寄售蜂蜜售出60瓶，佣金一成",
+    "payload": {
+      "quantity": 60,
+      "gross_cents": 180000,
+      "commission_cents": 18000,
+      "order_ref": "ord-0720-11",
+      "sold_at": "2026-07-20T15:00:00+08:00",
+      "point_of_sale_asset_id": "yard-hualang-station"
+    }
+  },
+  {
+    "event_id": "evt-blh-0018",
+    "event_type": "CONSIGNMENT_SOLD",
+    "aggregate_type": "consignment",
+    "aggregate_id": "batch-honey-2026",
+    "occurred_at": "2026-08-02T11:00:00+08:00",
+    "version": 3,
+    "summary": "寄售蜂蜜售出50瓶",
+    "payload": {
+      "quantity": 50,
+      "gross_cents": 150000,
+      "commission_cents": 15000,
+      "order_ref": "ord-0802-07",
+      "sold_at": "2026-08-02T11:00:00+08:00",
+      "point_of_sale_asset_id": "yard-hualang-station"
+    }
+  },
+  {
+    "event_id": "evt-blh-0019",
+    "event_type": "REFERRAL_RECORDED",
+    "aggregate_type": "referral",
+    "aggregate_id": "referral-2201",
+    "occurred_at": "2026-07-15T13:20:00+08:00",
+    "version": 1,
+    "summary": "驿站咖啡向云栖山居民宿导流1位客人，留存二维码凭证",
+    "payload": {
+      "source_party_id": "op-yunshu-travel",
+      "source_village": "画廊村",
+      "target_party_id": "op-shanju-stay",
+      "target_village": "云栖村",
+      "node_asset_id": "node-gallery-km0",
+      "channel": "驿站台卡二维码",
+      "guest_ref": "g-2201",
+      "evidence_kind": "qr_code",
+      "evidence_ref": "ev-qr-2201",
+      "recorded_at": "2026-07-15T13:20:00+08:00"
+    }
+  },
+  {
+    "event_id": "evt-blh-0020",
+    "event_type": "REFERRAL_VERIFIED",
+    "aggregate_type": "referral",
+    "aggregate_id": "referral-2201",
+    "occurred_at": "2026-07-16T18:00:00+08:00",
+    "version": 2,
+    "summary": "客人实际入住bk-7716，导流证据核销，导流费50元",
+    "payload": {
+      "referral_id": "referral-2201",
+      "booking_id": "bk-7716",
+      "checked_in_at": "2026-07-16T17:30:00+08:00",
+      "payout_cents": 5000
+    }
+  },
+  {
+    "event_id": "evt-blh-0021",
+    "event_type": "SERVICE_RECORDED",
+    "aggregate_type": "community_contribution",
+    "aggregate_id": "cc-referral-2026q3",
+    "occurred_at": "2026-07-17T09:00:00+08:00",
+    "version": 1,
+    "summary": "登记2026Q3画廊村向云栖村的跨村导流贡献1人次（附已核销凭证）",
+    "payload": {
+      "contribution_kind": "cross_village_referral",
+      "from_party": "op-yunshu-travel",
+      "from_village": "画廊村",
+      "to_village": "云栖村",
+      "quantity": 1,
+      "unit": "人次",
+      "evidence_refs": [
+        "referral-2201"
+      ],
+      "period": "2026Q3"
+    }
+  },
+  {
+    "event_id": "evt-blh-0022",
+    "event_type": "SHIFT_SCHEDULED",
+    "aggregate_type": "volunteer_shift",
+    "aggregate_id": "shift-zhou-0718",
+    "occurred_at": "2026-07-17T18:00:00+08:00",
+    "version": 1,
+    "summary": "排定志愿者老周7月18日节点秩序与咨询班次",
+    "payload": {
+      "shift_id": "shift-zhou-0718",
+      "volunteer_party_id": "volunteer-zhou",
+      "node_asset_id": "node-gallery-km0",
+      "starts_at": "2026-07-18T08:00:00+08:00",
+      "ends_at": "2026-07-18T12:00:00+08:00",
+      "duty": "节点秩序与游客咨询"
+    }
+  },
+  {
+    "event_id": "evt-blh-0023",
+    "event_type": "SHIFT_FULFILLED",
+    "aggregate_type": "volunteer_shift",
+    "aggregate_id": "shift-zhou-0718",
+    "occurred_at": "2026-07-18T12:05:00+08:00",
+    "version": 2,
+    "summary": "志愿班次完成并签到",
+    "payload": {
+      "shift_id": "shift-zhou-0718",
+      "evidence_ref": "ev-shift-signin-0718",
+      "served_minutes": 240
+    }
+  },
+  {
+    "event_id": "evt-blh-0024",
+    "event_type": "LOAD_REPORTED",
+    "aggregate_type": "eco_capacity",
+    "aggregate_id": "node-yunqi-gate",
+    "occurred_at": "2026-07-20T17:00:00+08:00",
+    "version": 2,
+    "summary": "云栖入口当日承载760人次，低于容量上限",
+    "payload": {
+      "node_asset_id": "node-yunqi-gate",
+      "date": "2026-07-20",
+      "load": 760
+    }
+  },
+  {
+    "event_id": "evt-blh-0025",
+    "event_type": "PREPAYMENT_RECEIVED",
+    "aggregate_type": "operating_term",
+    "aggregate_id": "term-yunshu-2026",
+    "occurred_at": "2026-08-05T10:00:00+08:00",
+    "version": 2,
+    "summary": "收取g-3301团餐定金200元，约定8月13日就餐",
+    "payload": {
+      "term_id": "term-yunshu-2026",
+      "prepayment_id": "prep-3001",
+      "guest_ref": "g-3301",
+      "amount_cents": 20000,
+      "service_kind": "catering",
+      "due_date": "2026-08-13"
+    }
+  },
+  {
+    "event_id": "evt-blh-0026",
+    "event_type": "SUSPENSION_ISSUED",
+    "aggregate_type": "suspension",
+    "aggregate_id": "susp-storm-0812",
+    "occurred_at": "2026-08-12T06:00:00+08:00",
+    "version": 1,
+    "summary": "暴雨红色预警：0公里节点交通进入、摊位与寄售销售、新预订暂停；已付款团餐g-3301列入受保护承诺",
+    "payload": {
+      "reason": "storm",
+      "scope_asset_ids": [
+        "node-gallery-km0",
+        "site-stall-km0",
+        "yard-hualang-station"
+      ],
+      "service_kinds": [
+        "traffic_entry",
+        "stall_sale",
+        "consignment_sale",
+        "new_booking"
+      ],
+      "starts_at": "2026-08-12T06:00:00+08:00",
+      "expected_end": "2026-08-13T20:00:00+08:00",
+      "protected_commitments": [
+        {
+          "commitment_id": "c-storm-3001",
+          "guest_ref": "g-3301",
+          "prepayment_id": "prep-3001",
+          "arrangement": "团餐改期至8月15日，定金继续有效"
+        }
+      ],
+      "note": "已入住旅客不受影响，沿线其他节点正常经营"
+    }
+  },
+  {
+    "event_id": "evt-blh-0027",
+    "event_type": "PREPAYMENT_FULFILLED",
+    "aggregate_type": "operating_term",
+    "aggregate_id": "term-yunshu-2026",
+    "occurred_at": "2026-08-15T13:00:00+08:00",
+    "version": 3,
+    "summary": "改期团餐就餐完成，定金兑现",
+    "payload": {
+      "prepayment_id": "prep-3001"
+    }
+  },
+  {
+    "event_id": "evt-blh-0028",
+    "event_type": "COMMITMENT_HONORED",
+    "aggregate_type": "suspension",
+    "aggregate_id": "susp-storm-0812",
+    "occurred_at": "2026-08-15T13:30:00+08:00",
+    "version": 2,
+    "summary": "暴雨暂停期间对g-3301的改期承诺已兑现",
+    "payload": {
+      "suspension_id": "susp-storm-0812",
+      "commitment_id": "c-storm-3001",
+      "note": "团餐改期8月15日完成，双方确认",
+      "honored_at": "2026-08-15T13:30:00+08:00"
+    }
+  },
+  {
+    "event_id": "evt-blh-0029",
+    "event_type": "SUSPENSION_LIFTED",
+    "aggregate_type": "suspension",
+    "aggregate_id": "susp-storm-0812",
+    "occurred_at": "2026-08-15T18:00:00+08:00",
+    "version": 3,
+    "summary": "暴雨预警解除，0公里节点各项业务恢复",
+    "payload": {
+      "ended_at": "2026-08-15T18:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "evt-blh-0030",
+    "event_type": "CONSIGNMENT_SOLD",
+    "aggregate_type": "consignment",
+    "aggregate_id": "batch-honey-2026",
+    "occurred_at": "2026-08-25T10:00:00+08:00",
+    "version": 4,
+    "summary": "寄售蜂蜜在摊位售出40瓶（含一笔20瓶赊销600元）",
+    "payload": {
+      "quantity": 40,
+      "gross_cents": 120000,
+      "commission_cents": 12000,
+      "order_ref": "ord-0825-03",
+      "sold_at": "2026-08-25T10:00:00+08:00",
+      "point_of_sale_asset_id": "site-stall-km0"
+    }
+  },
+  {
+    "event_id": "evt-blh-0031",
+    "event_type": "CONSIGNMENT_BAD_DEBT",
+    "aggregate_type": "consignment",
+    "aggregate_id": "batch-honey-2026",
+    "occurred_at": "2026-09-10T10:00:00+08:00",
+    "version": 5,
+    "summary": "团建公司赊销600元确认无法收回，按销售方信用风险由运营商承担",
+    "payload": {
+      "amount_cents": 60000,
+      "responsible_party_id": "op-yunshu-travel",
+      "basis": "seller_credit",
+      "evidence_ref": "ev-debt-collection-0910"
+    }
+  },
+  {
+    "event_id": "evt-blh-0032",
+    "event_type": "PREPAYMENT_RECEIVED",
+    "aggregate_type": "operating_term",
+    "aggregate_id": "term-shanju-2026",
+    "occurred_at": "2026-09-28T20:00:00+08:00",
+    "version": 2,
+    "summary": "收取g-1001国庆住宿预付款600元",
+    "payload": {
+      "term_id": "term-shanju-2026",
+      "prepayment_id": "prep-7001",
+      "guest_ref": "g-1001",
+      "amount_cents": 60000,
+      "service_kind": "stay",
+      "due_date": "2026-10-04"
+    }
+  },
+  {
+    "event_id": "evt-blh-0033",
+    "event_type": "PLEDGE_FULFILLED",
+    "aggregate_type": "employment_pledge",
+    "aggregate_id": "pledge-yunshu-2026",
+    "occurred_at": "2026-10-01T10:00:00+08:00",
+    "version": 2,
+    "summary": "三季度用工6人、本地5人，附7-9月工资表",
+    "payload": {
+      "term_id": "term-yunshu-2026",
+      "hires_total": 6,
+      "hires_local": 5,
+      "payroll_evidence_refs": [
+        "ev-payroll-202607",
+        "ev-payroll-202608",
+        "ev-payroll-202609"
+      ],
+      "period": "2026Q3"
+    }
+  },
+  {
+    "event_id": "evt-blh-0034",
+    "event_type": "LOAD_REPORTED",
+    "aggregate_type": "eco_capacity",
+    "aggregate_id": "node-yunqi-gate",
+    "occurred_at": "2026-10-02T15:00:00+08:00",
+    "version": 3,
+    "summary": "云栖入口当日承载950人次，超过800上限",
+    "payload": {
+      "node_asset_id": "node-yunqi-gate",
+      "date": "2026-10-02",
+      "load": 950
+    }
+  },
+  {
+    "event_id": "evt-blh-0035",
+    "event_type": "OVERLOAD_DECLARED",
+    "aggregate_type": "eco_capacity",
+    "aggregate_id": "node-yunqi-gate",
+    "occurred_at": "2026-10-02T15:20:00+08:00",
+    "version": 4,
+    "summary": "宣布云栖入口超载",
+    "payload": {
+      "node_asset_id": "node-yunqi-gate",
+      "date": "2026-10-02",
+      "load": 950
+    }
+  },
+  {
+    "event_id": "evt-blh-0036",
+    "event_type": "SUSPENSION_ISSUED",
+    "aggregate_type": "suspension",
+    "aggregate_id": "susp-overload-1002",
+    "occurred_at": "2026-10-02T15:30:00+08:00",
+    "version": 1,
+    "summary": "超载处置：暂停云栖入口新预订与新导流，在住客人g-1001照常接待",
+    "payload": {
+      "reason": "overload",
+      "scope_asset_ids": [
+        "node-yunqi-gate",
+        "yard-yunqi-08"
+      ],
+      "service_kinds": [
+        "new_booking",
+        "new_referral",
+        "traffic_entry"
+      ],
+      "starts_at": "2026-10-02T15:30:00+08:00",
+      "expected_end": "2026-10-05T12:00:00+08:00",
+      "protected_commitments": [
+        {
+          "commitment_id": "c-overload-7001",
+          "guest_ref": "g-1001",
+          "prepayment_id": "prep-7001",
+          "arrangement": "已入住客人住宿与早餐不受影响"
+        }
+      ],
+      "note": "仅拦截新业务，不驱赶在住旅客"
+    }
+  },
+  {
+    "event_id": "evt-blh-0037",
+    "event_type": "PREPAYMENT_FULFILLED",
+    "aggregate_type": "operating_term",
+    "aggregate_id": "term-shanju-2026",
+    "occurred_at": "2026-10-04T11:00:00+08:00",
+    "version": 3,
+    "summary": "g-1001正常退房离店，住宿服务兑现",
+    "payload": {
+      "prepayment_id": "prep-7001"
+    }
+  },
+  {
+    "event_id": "evt-blh-0038",
+    "event_type": "COMMITMENT_HONORED",
+    "aggregate_type": "suspension",
+    "aggregate_id": "susp-overload-1002",
+    "occurred_at": "2026-10-04T11:30:00+08:00",
+    "version": 2,
+    "summary": "超载暂停期间在住旅客g-1001承诺已兑现",
+    "payload": {
+      "suspension_id": "susp-overload-1002",
+      "commitment_id": "c-overload-7001",
+      "note": "在住期间服务正常，客人确认",
+      "honored_at": "2026-10-04T11:30:00+08:00"
+    }
+  },
+  {
+    "event_id": "evt-blh-0039",
+    "event_type": "SUSPENSION_LIFTED",
+    "aggregate_type": "suspension",
+    "aggregate_id": "susp-overload-1002",
+    "occurred_at": "2026-10-05T12:00:00+08:00",
+    "version": 3,
+    "summary": "云栖入口承载回落，暂停解除",
+    "payload": {
+      "ended_at": "2026-10-05T12:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "evt-blh-0040",
+    "event_type": "OVERLOAD_CLEARED",
+    "aggregate_type": "eco_capacity",
+    "aggregate_id": "node-yunqi-gate",
+    "occurred_at": "2026-10-05T12:10:00+08:00",
+    "version": 5,
+    "summary": "云栖入口超载解除",
+    "payload": {
+      "node_asset_id": "node-yunqi-gate",
+      "date": "2026-10-05"
+    }
+  },
+  {
+    "event_id": "evt-blh-0041",
+    "event_type": "CONSIGNMENT_RETURNED",
+    "aggregate_type": "consignment",
+    "aggregate_id": "batch-honey-2026",
+    "occurred_at": "2026-10-08T09:00:00+08:00",
+    "version": 6,
+    "summary": "季末未售50瓶按约定退回供货农户马桂凤",
+    "payload": {
+      "quantity": 50,
+      "reason": "季末未售，按 unsold_policy 退回",
+      "returned_at": "2026-10-08T09:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "evt-blh-0042",
+    "event_type": "CONSIGNMENT_SETTLED",
+    "aggregate_type": "consignment",
+    "aggregate_id": "batch-honey-2026",
+    "occurred_at": "2026-10-16T10:00:00+08:00",
+    "version": 7,
+    "summary": "寄售结清：销售4500元−佣金450元，应付农户4050元（销售方坏账600元不扣农户）",
+    "payload": {
+      "paid_cents": 405000,
+      "settled_at": "2026-10-16T10:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "evt-blh-0043",
+    "event_type": "STALL_CLOSED",
+    "aggregate_type": "seasonal_stall",
+    "aggregate_id": "stall-wang-2026",
+    "occurred_at": "2026-10-01T09:00:00+08:00",
+    "version": 2,
+    "summary": "王姐摊位撤场，A位点位清空核验通过",
+    "payload": {
+      "site_asset_id": "site-stall-km0",
+      "closed_at": "2026-10-01T09:00:00+08:00",
+      "note": "无遗留物，卫生合格"
+    }
+  },
+  {
+    "event_id": "evt-blh-0044",
+    "event_type": "ASSET_USAGE_RECORDED",
+    "aggregate_type": "shared_asset",
+    "aggregate_id": "yard-hualang-station",
+    "occurred_at": "2026-10-16T17:00:00+08:00",
+    "version": 2,
+    "summary": "记录云舒文旅5月1日至10月15日对集体院落的咖啡经营使用",
+    "payload": {
+      "asset_id": "yard-hualang-station",
+      "term_id": "term-yunshu-2026",
+      "party_id": "op-yunshu-travel",
+      "used_from": "2026-05-01T00:00:00+08:00",
+      "used_to": "2026-10-15T23:59:59+08:00",
+      "usage_kind": "cafe"
+    }
+  },
+  {
+    "event_id": "evt-blh-0045",
+    "event_type": "ASSET_USAGE_RECORDED",
+    "aggregate_type": "shared_asset",
+    "aggregate_id": "yard-yunqi-08",
+    "occurred_at": "2026-10-20T17:00:00+08:00",
+    "version": 2,
+    "summary": "记录山居民宿5月1日至10月20日对8号院的使用",
+    "payload": {
+      "asset_id": "yard-yunqi-08",
+      "term_id": "term-shanju-2026",
+      "party_id": "op-shanju-stay",
+      "used_from": "2026-05-01T00:00:00+08:00",
+      "used_to": "2026-10-20T23:59:59+08:00",
+      "usage_kind": "homestay"
+    }
+  },
+  {
+    "event_id": "evt-blh-0046",
+    "event_type": "BENEFIT_ALLOCATED",
+    "aggregate_type": "benefit_distribution",
+    "aggregate_id": "alloc-2026q3",
+    "occurred_at": "2026-10-08T18:00:00+08:00",
+    "version": 1,
+    "summary": "形成2026Q3分配结果：农户货款、寄售佣金、导流费、院落使用费分开列示",
+    "payload": {
+      "period": "2026Q3",
+      "lines": [
+        {
+          "line_id": "L1",
+          "party_id": "farmer-ma-guifeng",
+          "amount_cents": 405000,
+          "basis": "consignment_proceeds",
+          "evidence_refs": [
+            "batch-honey-2026"
+          ],
+          "note": "寄售货款（销售额−佣金）"
+        },
+        {
+          "line_id": "L2",
+          "party_id": "op-yunshu-travel",
+          "amount_cents": 45000,
+          "basis": "consignment_commission",
+          "evidence_refs": [
+            "batch-honey-2026"
+          ],
+          "note": "寄售佣金一成"
+        },
+        {
+          "line_id": "L3",
+          "party_id": "op-yunshu-travel",
+          "amount_cents": 5000,
+          "basis": "referral_commission",
+          "evidence_refs": [
+            "referral-2201"
+          ],
+          "note": "跨村导流费（凭入住核销）"
+        },
+        {
+          "line_id": "L4",
+          "party_id": "collective-hualang",
+          "amount_cents": 20000,
+          "basis": "asset_usage_fee",
+          "evidence_refs": [
+            "term-yunshu-2026"
+          ],
+          "note": "集体院落使用费"
+        }
+      ]
+    }
+  },
+  {
+    "event_id": "evt-blh-0047",
+    "event_type": "BENEFIT_SETTLED",
+    "aggregate_type": "benefit_distribution",
+    "aggregate_id": "alloc-2026q3",
+    "occurred_at": "2026-10-09T15:00:00+08:00",
+    "version": 2,
+    "summary": "2026Q3分配结果已逐笔兑付并留存银行回单",
+    "payload": {
+      "allocation_aggregate_id": "alloc-2026q3",
+      "evidence_ref": "ev-bank-2026q3"
+    }
+  },
+  {
+    "event_id": "evt-blh-0048",
+    "event_type": "NOTICE_PUBLISHED",
+    "aggregate_type": "public_notice",
+    "aggregate_id": "notice-2026q3-hualang",
+    "occurred_at": "2026-10-10T10:00:00+08:00",
+    "version": 1,
+    "summary": "发布画廊村2026年第三季度共益运营公示",
+    "payload": {
+      "quarter": "2026Q3",
+      "scope_village": "画廊村",
+      "sections": {
+        "asset_usage": [
+          {
+            "term_id": "term-yunshu-2026",
+            "party_id": "op-yunshu-travel",
+            "asset_ids": [
+              "yard-hualang-station"
+            ],
+            "usage_kind": "cafe",
+            "used_from": "2026-05-01T00:00:00+08:00",
+            "used_to": "2026-10-15T23:59:59+08:00"
+          }
+        ],
+        "repair_burden": [
+          {
+            "repair_order_id": "repair-toilet-0710",
+            "asset_id": "toilet-gallery-km0",
+            "fault": "供水管破裂停水",
+            "claimed_by": "op-yunshu-travel",
+            "cost_cents": 180000,
+            "borne_by": [
+              {
+                "party_id": "op-yunshu-travel",
+                "share_cents": 80000
+              },
+              {
+                "party_id": "collective-hualang",
+                "share_cents": 100000
+              }
+            ]
+          }
+        ],
+        "employment": {
+          "pledges": [
+            {
+              "term_id": "term-yunshu-2026",
+              "positions_total": 6,
+              "local_positions_min": 4,
+              "hires_total": 6,
+              "hires_local": 5,
+              "payroll_evidence_refs": [
+                "ev-payroll-202607",
+                "ev-payroll-202608",
+                "ev-payroll-202609"
+              ]
+            }
+          ]
+        },
+        "distributable_benefit": {
+          "allocations": [
+            {
+              "aggregate_id": "alloc-2026q3",
+              "total_cents": 475000,
+              "settled": true
+            }
+          ]
+        }
+      },
+      "source_event_ids": [
+        "evt-blh-0009",
+        "evt-blh-0011",
+        "evt-blh-0013",
+        "evt-blh-0014",
+        "evt-blh-0015",
+        "evt-blh-0016",
+        "evt-blh-0017",
+        "evt-blh-0018",
+        "evt-blh-0019",
+        "evt-blh-0020",
+        "evt-blh-0025",
+        "evt-blh-0027",
+        "evt-blh-0030",
+        "evt-blh-0031",
+        "evt-blh-0033",
+        "evt-blh-0041",
+        "evt-blh-0042",
+        "evt-blh-0046",
+        "evt-blh-0047"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-blh-0049",
+    "event_type": "OPERATOR_EXITED",
+    "aggregate_type": "operating_term",
+    "aggregate_id": "term-yunshu-2026",
+    "occurred_at": "2026-10-18T09:00:00+08:00",
+    "version": 4,
+    "summary": "云舒文旅提出旺季结束退出",
+    "payload": {
+      "requested_at": "2026-10-18T09:00:00+08:00",
+      "reason": "旺季许可到期，正常退出"
+    }
+  },
+  {
+    "event_id": "evt-blh-0050",
+    "event_type": "HANDOVER_LIST_GENERATED",
+    "aggregate_type": "handover",
+    "aggregate_id": "ho-yunshu-2026",
+    "occurred_at": "2026-10-18T09:00:05+08:00",
+    "version": 1,
+    "summary": "系统生成退出交割清单：院落与吧台设备待清场、数据责任待确认",
+    "payload": {
+      "term_id": "term-yunshu-2026",
+      "operator_party_id": "op-yunshu-travel",
+      "generated_at": "2026-10-18T09:00:05+08:00",
+      "checklist": {
+        "term_id": "term-yunshu-2026",
+        "operator_party_id": "op-yunshu-travel",
+        "assets_to_return": [
+          "yard-hualang-station"
+        ],
+        "open_consignments": [
+          {
+            "batch_id": "batch-honey-2026",
+            "supplier_party_id": "farmer-ma-guifeng",
+            "seller_party_id": "op-yunshu-travel",
+            "quantity_on_hand": 0,
+            "owed_to_supplier_cents": 450000,
+            "settled": true
+          }
+        ],
+        "open_prepayments": [],
+        "equipment_to_clear": [
+          {
+            "asset_id": "yard-hualang-station",
+            "asset_kind": "collective_yard",
+            "owner": "collective",
+            "removable": false
+          },
+          {
+            "asset_id": "eqp-coffee-bar",
+            "asset_kind": "equipment",
+            "owner": "operator",
+            "removable": true
+          }
+        ],
+        "open_repairs": [],
+        "unverified_referrals": [],
+        "pledge_status": {
+          "positions_promised": 6,
+          "positions_delivered": 6,
+          "local_promised": 4,
+          "local_delivered": 5,
+          "positions_gap": 0,
+          "local_gap": 0
+        },
+        "data_responsibilities": [
+          "预付款台账与旅客联系方式",
+          "寄售批次、农户结算与退货记录",
+          "导流凭证与核销记录",
+          "公共资产使用与维修记录",
+          "会员与营销数据（须按合同删除或移交，不得擅自带走）"
+        ],
+        "blockers": [
+          {
+            "blocker_id": "B-eqp-yard-hualang-station",
+            "kind": "equipment_on_site",
+            "ref": "yard-hualang-station",
+            "detail": "可搬离设备须登记放行；公共/集体资产须交还，不得在交割完成前悄悄搬离"
+          },
+          {
+            "blocker_id": "B-eqp-eqp-coffee-bar",
+            "kind": "equipment_on_site",
+            "ref": "eqp-coffee-bar",
+            "detail": "可搬离设备须登记放行；公共/集体资产须交还，不得在交割完成前悄悄搬离"
+          },
+          {
+            "blocker_id": "B-dat-term-yunshu-2026",
+            "kind": "data_handover",
+            "ref": "term-yunshu-2026",
+            "detail": "经营数据责任未签署移交/销毁确认"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "event_id": "evt-blh-0051",
+    "event_type": "ASSET_RETURNED",
+    "aggregate_type": "shared_asset",
+    "aggregate_id": "yard-hualang-station",
+    "occurred_at": "2026-10-19T09:00:00+08:00",
+    "version": 3,
+    "summary": "集体院落交还村集体，结构与固定设施完好",
+    "payload": {
+      "asset_id": "yard-hualang-station",
+      "term_id": "term-yunshu-2026",
+      "returned_by": "op-yunshu-travel",
+      "condition_note": "固定设施完好，卫生合格"
+    }
+  },
+  {
+    "event_id": "evt-blh-0052",
+    "event_type": "ASSET_REMOVED",
+    "aggregate_type": "shared_asset",
+    "aggregate_id": "eqp-coffee-bar",
+    "occurred_at": "2026-10-19T09:30:00+08:00",
+    "version": 2,
+    "summary": "运营商自带可搬离咖啡吧台按清单登记搬离",
+    "payload": {
+      "asset_id": "eqp-coffee-bar",
+      "removing_party": "op-yunshu-travel",
+      "reason": "退出交割清单内设备放行"
+    }
+  },
+  {
+    "event_id": "evt-blh-0053",
+    "event_type": "HANDOVER_BLOCKER_RESOLVED",
+    "aggregate_type": "handover",
+    "aggregate_id": "ho-yunshu-2026",
+    "occurred_at": "2026-10-19T10:00:00+08:00",
+    "version": 2,
+    "summary": "院落交还阻断项凭交接照片解除",
+    "payload": {
+      "handover_id": "ho-yunshu-2026",
+      "blocker_id": "B-eqp-yard-hualang-station",
+      "resolution_evidence": "ev-handover-yard-1019"
+    }
+  },
+  {
+    "event_id": "evt-blh-0054",
+    "event_type": "HANDOVER_BLOCKER_RESOLVED",
+    "aggregate_type": "handover",
+    "aggregate_id": "ho-yunshu-2026",
+    "occurred_at": "2026-10-19T10:05:00+08:00",
+    "version": 3,
+    "summary": "吧台设备放行阻断项凭出门登记解除",
+    "payload": {
+      "handover_id": "ho-yunshu-2026",
+      "blocker_id": "B-eqp-eqp-coffee-bar",
+      "resolution_evidence": "ev-handover-coffee-1019"
+    }
+  },
+  {
+    "event_id": "evt-blh-0055",
+    "event_type": "HANDOVER_COMPLETED",
+    "aggregate_type": "handover",
+    "aggregate_id": "ho-yunshu-2026",
+    "occurred_at": "2026-10-19T11:00:00+08:00",
+    "version": 4,
+    "summary": "交割完成：资产、款项、库存与数据责任全部移交，财政厕所仍归公共台账",
+    "payload": {
+      "handover_id": "ho-yunshu-2026",
+      "receiving_party_id": "collective-hualang",
+      "data_acknowledgement_ref": "ev-data-handover-2026",
+      "completed_at": "2026-10-19T11:00:00+08:00"
+    }
+  }
+]

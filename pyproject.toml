@@ -1,5 +1,5 @@
 [project]
-name = "domain-event-base"
-version = "0.1.0"
-description = "领域事件基础校验"
+name = "baili-gallery-benefit-ops"
+version = "0.2.0"
+description = "百里画廊沿线共益运营领域事件、持续审计投影与退出交割"
 requires-python = ">=3.11"
